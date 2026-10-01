@@ -24,11 +24,31 @@
     </ul>
 
     <div style="text-align: center; margin-top: 30px;">
-        <a href="https://buy.stripe.com/28E00l6Eh7Anfssc4g3wQ00" 
-           style="background-color: #b94e1a; color: white; padding: 16px 32px; text-decoration: none; 
-                  display: inline-block; border-radius: 6px; font-size: 18px; width: 100%; max-width: 300px;">
-            Sign Up
-        </a>
-    </div>
+    <a id="signup-button"
+       href="https://buy.stripe.com/28E00l6Eh7Anfssc4g3wQ00"
+       style="background-color: #b94e1a; color: white; padding: 16px 32px;
+              text-decoration: none; border-radius: 6px; font-size: 18px;
+              width: 100%; max-width: 300px; box-sizing: border-box; display: none;">
+        Sign Up
+    </a>
+
+    <p id="signup-closed">Sign-ups are currently closed. Please check back on 1 June.</p>
+</div>
+
+<script>
+    const ukMonth = Number(
+        new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/London',
+            month: 'numeric'
+        }).format(new Date())
+    );
+
+    const signupsOpen = ukMonth >= 6 && ukMonth <= 9;
+
+    document.getElementById('signup-button').style.display =
+        signupsOpen ? 'inline-block' : 'none';
+    document.getElementById('signup-closed').style.display =
+        signupsOpen ? 'none' : 'block';
+</script>
 </body>
 </html>
